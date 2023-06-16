@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('拉取代码'){
             steps{
-                git branch: 'master', credentialsId: '3', url: 'ssh://git@github.com:Zealw/zeal.git'
+                git branch: 'master', credentialsId: '3', url: 'https://github.com/Zealw/zeal.git'
             }
         }
         stage('编译代码'){
