@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('拉取代码'){
             steps{
-                git branch: 'master', credentialsId: '3', url: 'https://github.com/Zealw/zeal.git'
+                git branch: 'master', url: 'https://github.com/Zealw/zeal.git'
             }
         }
         stage('编译代码'){
@@ -41,17 +41,6 @@ pipeline {
         stage('部署代码') {
             agent none          
                 steps {
-                    script{
-                        def remote = [:]
-                        remote.name = '47.93.85.151'
-                        remote.host = '47.93.85.151'
-                        remote.port = 22
-                        remote.allowAnyHosts = true
-                        withCredentials([usernamePassword(credentialsId: '8', passwordVariable: 'passWord', usernameVariable: 'userName')]) {
-                            remote.user = "${userName}"
-                            remote.password = "${password}"
-                       
-                    }   
                     sshCommand remote: remote, command: '''
                     HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                     REPOSITORIES='zeal'
