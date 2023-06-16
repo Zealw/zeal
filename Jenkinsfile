@@ -41,6 +41,7 @@ pipeline {
         stage('部署代码') {
             agent none          
                 steps {
+                    script{
                     sshCommand remote: remote, command: '''
                     HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                     REPOSITORIES='zeal'
