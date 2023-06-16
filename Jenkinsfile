@@ -10,7 +10,7 @@ pipeline {
         stage('编译代码'){
             steps{
                 sh "/user/local/apache-maven-3.9.2/bin/mvn clean install"
-                sh "cd /home/app/jenkins/workspace/zeal && /root/apache-maven-3.9.2/bin/mvn package -Dmaven.test.skip=true"
+                sh "cd /home/app/jenkins/workspace/zeal && /user/local/apache-maven-3.9.2/bin/mvn package -Dmaven.test.skip=true"
             }
         }
         stage('打包代码'){
