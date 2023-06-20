@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('拉取代码'){
             steps{
-                git branch: 'master', url: 'https://github.com/Zealw/zeal.git'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ff', url: 'git@github.com:Zealw/zeal.git']])
             }
         }
         stage('编译代码'){
