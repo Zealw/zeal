@@ -4,20 +4,19 @@ pipeline {
     stages{
         stage('拉取代码'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ff', url: 'git@github.com:Zealw/zeal.git']])
-            }
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ff', url: 'https://github.com/Zealw/zeal.git']])            }
         }
         stage('编译代码'){
             steps{
                 sh "/usr/local/apache-maven-3.9.2/bin/mvn clean install"
-                sh "cd /home/app/jenkins/workspace/zeal && /usr/local/apache-maven-3.9.2/bin/mvn package -Dmaven.test.skip=true"
+                sh "cd /var/jenkins_home/workspace/zeal && /usr/local/apache-maven-3.9.2/bin/mvn package -Dmaven.test.skip=true"
             }
         }
         stage('打包代码'){
             steps{
                 sh '''
-                JENKINS_JAR_HOME='/home/app/jenkins/workspace/zeal/target'
-                DOCKERFILE_HOME='/home/app/jenkins/workspace/zeal'
+                JENKINS_JAR_HOME='/var/jenkins_home/workspace/zeal/target'
+                DOCKERFILE_HOME='/var/jenkins_home/workspace/zeal'
                 HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                 REPOSITORIES='zeal'
                 HARBOR_USER='zealuu'
