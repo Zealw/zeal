@@ -22,18 +22,18 @@ pipeline {
                 HARBOR_USER='zealuu'
                 PASSWORD='zealuu9.'
 
-                sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
-                IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
+                 docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
+                IMAGE_ID=` docker images | grep ${REPOSITORIES} | awk '{print $3}'`
                 if [ -n "${IMAGE_ID}" ];then
-                    sudo docker rmi ${IMAGE_ID}
+                     docker rmi ${IMAGE_ID}
                 fi
 
                 cd ${DOCKERFILE_HOME}
                 pwd
                 TAG=`date +%Y%m%d`
-                sudo docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:${TAG} --no-cache .
+                 docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:${TAG} --no-cache .
 
-                sudo docker push ${HARBOR_IP}:80/${REPOSITORIES}:${TAG}
+                 docker push ${HARBOR_IP}:80/${REPOSITORIES}:${TAG}
                 '''
 
             }
@@ -54,7 +54,7 @@ pipeline {
                     DOCKER_NAME='zeal'
                     PASSWORD='zealuu9.'
 
-                    sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
+                     docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
 
                     CONTAINER_ID=`docker ps | grep ${DOCKER_NAME} | awk '{print $1}'`
                     if [ -n "$CONTAINER_ID" ]; then
@@ -67,15 +67,15 @@ pipeline {
                         fi
                     fi
 
-                    IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
+                    IMAGE_ID=` docker images | grep ${REPOSITORIES} | awk '{print $3}'`
                     if [ -n "${IMAGE_ID}" ];then
                         docker rmi ${IMAGE_ID}
                     fi
 
                     TAG=`date +%Y%m%d`
-                    sudo docker pull ${HARBOR_IP}/${REPOSITORIES}:${TAG} &>/dev/null
+                     docker pull ${HARBOR_IP}/${REPOSITORIES}:${TAG} &>/dev/null
 
-                    sudo docker run -d -p 9639:9639 --name ${DOCKER_NAME} ${HARBOR_IP}/${REPOSITORIES}:${TAG}
+                     docker run -d -p 9639:9639 --name ${DOCKER_NAME} ${HARBOR_IP}/${REPOSITORIES}:${TAG}
                     '''
                 }
             }
