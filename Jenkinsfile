@@ -18,7 +18,7 @@ pipeline {
                 JENKINS_JAR_HOME='/var/jenkins_home/workspace/zeal/target'
                 DOCKERFILE_HOME='/var/jenkins_home/workspace/zeal'
                 HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
-                REPOSITORIES='zeal'
+                REPOSITORIES='zealuu/zeal'
                 HARBOR_USER='zealuu'
                 PASSWORD='zealuu9.'
                 echo $USER
@@ -49,7 +49,7 @@ pipeline {
                         remote.allowAnyHosts = true
                     sshCommand remote: remote, command: '''
                     HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
-                    REPOSITORIES='zeal'
+                    REPOSITORIES='zealuu/zeal'
                     HARBOR_USER='zealuu'
                     DOCKER_NAME='zeal'
                     PASSWORD='zealuu9.'
