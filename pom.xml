@@ -10,7 +10,6 @@
     </parent>
     <groupId>com</groupId>
     <artifactId>zeal</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>zeal</name>
     <description>zeal</description>
     <properties>
