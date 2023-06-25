@@ -20,9 +20,8 @@ pipeline {
                 HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                 REPOSITORIES='zeal'
                 HARBOR_USER='zealuu'
-                PASSWORD='zealuu9.'
 
-                sudo docker login -u ${HARBOR_USER} ${HARBOR_IP} -p ${PASSWORD}
+                sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
                 IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
                 if [ -n "${IMAGE_ID}" ];then
                     sudo docker rmi ${IMAGE_ID}
@@ -52,9 +51,8 @@ pipeline {
                     REPOSITORIES='zeal'
                     HARBOR_USER='zealuu'
                     DOCKER_NAME='zeal'
-                    PASSWORD='zealuu9.'
 
-                    sudo docker login -u ${HARBOR_USER} ${HARBOR_IP} -p ${PASSWORD}
+                    sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
 
                     CONTAINER_ID=`docker ps | grep ${DOCKER_NAME} | awk '{print $1}'`
                     if [ -n "$CONTAINER_ID" ]; then
