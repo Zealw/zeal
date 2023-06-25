@@ -12,6 +12,6 @@ WORKDIR /zeal
 
 EXPOSE 9639
 
-COPY ./target/zeal.jar ./zeal.jar
+COPY ./target/zeal-1.jar ./zeal.jar
 
 ENTRYPOINT ["java", "-Xms500m","-Xmx500m","-XX:MetaspaceSize=256m","-XX:MaxMetaspaceSize=512m", "-jar", "zeal.jar","--spring.profiles.active=test"]
