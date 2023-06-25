@@ -20,6 +20,7 @@ pipeline {
                 HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                 REPOSITORIES='zeal'
                 HARBOR_USER='zealuu'
+                PASSWORD='zealuu9.'
 
                 sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
                 IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
@@ -51,6 +52,7 @@ pipeline {
                     REPOSITORIES='zeal'
                     HARBOR_USER='zealuu'
                     DOCKER_NAME='zeal'
+                    PASSWORD='zealuu9.'
 
                     sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
 
