@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-06-15 15:38:02
  */
 @RestController
-@RequestMapping("sutdent")
+@RequestMapping("student")
 public class SutdentController  {
     @GetMapping("zeal")
     public String delete() {

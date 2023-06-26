@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('拉取代码'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ff', url: 'https://github.com/Zealw/zeal.git']])            }
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'pwd', url: 'https://github.com/Zealw/zeal.git']])            }
         }
         stage('编译代码'){
             steps{
@@ -33,7 +33,7 @@ pipeline {
                 TAG=`date +%Y%m%d`
                 sudo docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:${TAG} --no-cache .
 
-                sudo docker push ${HARBOR_IP}:80/${REPOSITORIES}:${TAG}
+                sudo docker push ${HARBOR_IP}/${REPOSITORIES}:${TAG}
                 '''
 
             }
@@ -42,12 +42,7 @@ pipeline {
             agent none
                 steps {
                     script{
-                        def remote = [:]
-                        remote.name = '47.93.85.151'
-                        remote.host = '47.93.85.151'
-                        remote.port = 22
-                        remote.allowAnyHosts = true
-                    sshCommand remote: remote, command: '''
+                    sh '''
                     HARBOR_IP='registry.cn-hangzhou.aliyuncs.com'
                     REPOSITORIES='zealuu/zeal'
                     HARBOR_USER='zealuu'
