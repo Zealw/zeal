@@ -14,11 +14,12 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2023-06-15 15:38:02
  */
-@Service("sutdentService")
+@Service
 public class StudentServiceImpl implements StudentService {
 
     @Resource
     private StudentDao studentDao;
+
     @Override
     public R get() {
         return R.data(studentDao.selectById(1));

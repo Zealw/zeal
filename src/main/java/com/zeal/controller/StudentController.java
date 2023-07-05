@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * (Sutdent)表控制层
  *
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("student")
 public class StudentController  {
-    @Autowired private StudentService service;
+    @Resource
+    private StudentService service;
+
     @GetMapping("zeal")
     public String delete() {
         return "zeal";

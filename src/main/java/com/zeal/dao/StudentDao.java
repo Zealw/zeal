@@ -2,6 +2,7 @@ package com.zeal.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zeal.entity.Student;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * (Sutdent)表数据库访问层
@@ -9,6 +10,7 @@ import com.zeal.entity.Student;
  * @author makejava
  * @since 2023-06-15 15:38:02
  */
+@Mapper
 public interface StudentDao extends BaseMapper<Student> {
 
 }

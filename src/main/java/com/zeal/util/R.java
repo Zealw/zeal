@@ -1,32 +1,18 @@
 package com.zeal.util;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Optional;
 import org.springframework.lang.Nullable;
 
-@ApiModel(
-        description = "返回信息"
-)
+
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 1L;
-    @ApiModelProperty(
-            value = "状态码",
-            required = true
-    )
+
     private int code;
-    @ApiModelProperty(
-            value = "是否成功",
-            required = true
-    )
+
     private boolean success;
-    @ApiModelProperty("承载数据")
     private T data;
-    @ApiModelProperty(
-            value = "返回消息",
-            required = true
-    )
+
     private String msg;
 
     private R(IResultCode resultCode) {
