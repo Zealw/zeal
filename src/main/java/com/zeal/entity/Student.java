@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @SuppressWarnings("serial")
 @Data
-public class Sutdent {
+public class Student {
 
     private Integer id;
 

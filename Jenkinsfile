@@ -21,7 +21,6 @@ pipeline {
                 REPOSITORIES='zealuu/zeal'
                 HARBOR_USER='zealuu'
                 PASSWORD='zealuu9.'
-                echo $USER
                 sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
                 IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
                 if [ -n "${IMAGE_ID}" ];then
