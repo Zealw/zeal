@@ -80,6 +80,7 @@ pipeline {
                     sudo docker pull ${HARBOR_IP}/${REPOSITORIES}:last &>/dev/null
 
                     sudo docker run -d -p 9639:9639 --name ${DOCKER_NAME} ${HARBOR_IP}/${REPOSITORIES}:last
+                    sudo docker restart mysql
                     '''
                 }
             }
