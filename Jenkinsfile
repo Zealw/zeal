@@ -21,6 +21,7 @@ pipeline {
                 REPOSITORIES='zealuu/zeal'
                 HARBOR_USER='zealuu'
                 PASSWORD='zealuu9.'
+                DOCKER_NAME='zeal'
                 sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
 
                 CONTAINER_ID=`docker ps | grep ${DOCKER_NAME} | awk '{print $1}'`
