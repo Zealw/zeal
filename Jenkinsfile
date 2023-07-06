@@ -22,6 +22,17 @@ pipeline {
                 HARBOR_USER='zealuu'
                 PASSWORD='zealuu9.'
                 sudo docker login -u ${HARBOR_USER} -p ${PASSWORD} ${HARBOR_IP}
+
+                CONTAINER_ID=`docker ps | grep ${DOCKER_NAME} | awk '{print $1}'`
+                                    if [ -n "$CONTAINER_ID" ]; then
+                                        docker stop $CONTAINER_ID
+                                        docker rm $CONTAINER_ID
+                                    else
+                                        CONTAINER_ID=`docker ps -a | grep ${DOCKER_NAME} | awk '{print $1}'`
+                                        if [ -n "$CONTAINER_ID" ]; then
+                                            docker rm $CONTAINER_ID
+                                        fi
+                                    fi
                 IMAGE_ID=`sudo docker images | grep ${REPOSITORIES} | awk '{print $3}'`
                 if [ -n "${IMAGE_ID}" ];then
                     sudo docker rmi ${IMAGE_ID}

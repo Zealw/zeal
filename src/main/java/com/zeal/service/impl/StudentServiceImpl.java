@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Resource
+    @Autowired
     private StudentDao studentDao;
 
     @Override

@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("student")
 public class StudentController  {
-    @Resource
+    @Autowired
     private StudentService service;
 
     @GetMapping("zeal")
