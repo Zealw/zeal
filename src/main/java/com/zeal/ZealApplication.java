@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.zeal.dao")
+@MapperScan(basePackages = "com.zeal.dao")
 public class ZealApplication {
 
     public static void main(String[] args) {
