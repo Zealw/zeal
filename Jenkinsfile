@@ -44,6 +44,8 @@ pipeline {
 
                 sudo docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:last --no-cache .
 
+                sudo docker push ${HARBOR_IP}/${REPOSITORIES}:last
+
                 '''
 
             }
