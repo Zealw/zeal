@@ -41,10 +41,9 @@ pipeline {
 
                 cd ${DOCKERFILE_HOME}
                 pwd
-                TAG=`date +%Y%m%d`
-                sudo docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:${TAG} --no-cache .
 
-                sudo docker push ${HARBOR_IP}/${REPOSITORIES}:${TAG}
+                sudo docker build --no-cache -t ${HARBOR_IP}/${REPOSITORIES}:last --no-cache .
+
                 '''
 
             }
@@ -78,10 +77,9 @@ pipeline {
                         docker rmi ${IMAGE_ID}
                     fi
 
-                    TAG=`date +%Y%m%d`
-                    sudo docker pull ${HARBOR_IP}/${REPOSITORIES}:${TAG} &>/dev/null
+                    sudo docker pull ${HARBOR_IP}/${REPOSITORIES}:last &>/dev/null
 
-                    sudo docker run -d -p 9639:9639 --name ${DOCKER_NAME} ${HARBOR_IP}/${REPOSITORIES}:${TAG}
+                    sudo docker run -d -p 9639:9639 --name ${DOCKER_NAME} ${HARBOR_IP}/${REPOSITORIES}:last
                     '''
                 }
             }
