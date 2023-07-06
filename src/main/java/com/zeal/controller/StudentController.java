@@ -28,7 +28,7 @@ public class StudentController  {
 
     @GetMapping("zeal")
     public String delete() {
-        return "zealer";
+        return "zeal";
     }
 
     @GetMapping("sql")
