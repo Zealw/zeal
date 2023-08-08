@@ -1,7 +1,7 @@
 package com.zeal.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zeal.entity.Student;
+import com.zeal.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023-06-15 15:38:02
  */
 @Mapper
-public interface StudentDao extends BaseMapper<Student> {
+public interface UserDao extends BaseMapper<User> {
 
 }
 

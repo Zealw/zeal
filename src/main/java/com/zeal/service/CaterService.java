@@ -8,8 +8,8 @@ import com.zeal.util.R;
  * @author makejava
  * @since 2023-06-15 15:38:02
  */
-public interface StudentService {
-    R get();
+public interface CaterService {
+    R match(Long userId);
 
 }
 
